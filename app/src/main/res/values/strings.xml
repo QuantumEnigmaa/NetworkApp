@@ -12,6 +12,7 @@
     <string name="enter_password_again">Confirmez votre mot de passe</string>
     <string name="signin_password">Mot de Passe</string>
     <string name="signin_connect">Se connecter</string>
+    <string name="create_account">Créer compte</string>
     <string name="create_account_title">Création de compte</string>
     <string name="titre_post">Titre du Post</string>
     <string name="nom_posteur">Nom du Posteur</string>
