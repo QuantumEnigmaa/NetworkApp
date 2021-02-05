@@ -4,9 +4,11 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
+import com.google.firebase.auth.FirebaseUser
 import fr.isen.networkapp.pk.databinding.ActivitySignInBinding
 import fr.isen.networkapp.pk.extensions.Extensions.toast
 import fr.isen.networkapp.pk.utils.FirebaseUtils.firebaseAuth
+import fr.isen.networkapp.pk.utils.FirebaseUtils.firebaseUser
 
 class SignInActivity : AppCompatActivity() {
 
@@ -31,6 +33,15 @@ class SignInActivity : AppCompatActivity() {
             singInUser()
         }
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val user: FirebaseUser? = firebaseAuth.currentUser
+        user?.let {
+            startActivity(Intent(this, HomeActivity::class.java))
+            toast("Bienvenue !")
+        }
     }
 
     private fun notEmpty(): Boolean = signInEmail.isNotEmpty() && signInPassword.isNotEmpty()

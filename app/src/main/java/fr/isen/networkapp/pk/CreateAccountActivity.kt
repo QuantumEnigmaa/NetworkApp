@@ -29,15 +29,6 @@ class CreateAccountActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        val user: FirebaseUser? = firebaseAuth.currentUser
-        user?.let {
-            startActivity(Intent(this, HomeActivity::class.java))
-            toast("Bienvenue !")
-        }
-    }
-
     private fun notEmpty(): Boolean = binding.accountCreationEnterMail.text.toString().trim().isNotEmpty() &&
             binding.accountCreationPassword.text.toString().trim().isNotEmpty() &&
             binding.accountCreationPasswordAgain.text.toString().trim().isNotEmpty()

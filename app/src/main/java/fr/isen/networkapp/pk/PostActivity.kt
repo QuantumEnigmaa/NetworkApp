@@ -10,7 +10,9 @@ import android.provider.MediaStore
 import fr.isen.networkapp.pk.databinding.ActivityPostBinding
 import android.view.View
 import android.widget.ImageView
-
+import fr.isen.networkapp.pk.model.Post
+import fr.isen.networkapp.pk.utils.FirebaseUtils.dbRef
+import fr.isen.networkapp.pk.utils.FirebaseUtils.firebaseUser
 
 
 class PostActivity : AppCompatActivity() {
@@ -24,6 +26,11 @@ class PostActivity : AppCompatActivity() {
 
         binding.newPictureButton.setOnClickListener {
             dispatchTakePictureIntent()
+        }
+
+        binding.postButton.setOnClickListener {
+            val testMessage: Post = Post("postTest", "blablabla", "jean-didier")
+            dbRef.child("testpost").setValue(testMessage)
         }
     }
 
