@@ -3,4 +3,9 @@
     <string name="best_string">my best string</string>
     <string name="true_best_string">Tibo est pd</string>
     <string name="best_string_nathan"> best string nathan</string>
+    <string name="description"> description</string>
+    <string name="post_title"> titre de la publication</string>
+    <string name="post_button"> publié</string>
+    <string name="new_picture"> Prendre une photo</string>
+    <string name="select_picture"> Selectionné une photo</string>
 </resources>
