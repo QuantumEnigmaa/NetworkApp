@@ -14,8 +14,9 @@ import android.widget.ImageView
 
 
 class PostActivity : AppCompatActivity() {
-    lateinit var binding: ActivityPostBinding
-    val REQUEST_IMAGE_CAPTURE = 1
+    private lateinit var binding: ActivityPostBinding
+    private val REQUEST_IMAGE_CAPTURE = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPostBinding.inflate(layoutInflater)
@@ -30,7 +31,7 @@ class PostActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            binding.pictureSelected.setImageBitmap(imageBitmap)
+            binding.imageView.setImageBitmap(imageBitmap)
         }
     }
 
