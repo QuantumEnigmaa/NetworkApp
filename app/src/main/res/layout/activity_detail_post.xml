@@ -37,7 +37,7 @@
         android:layout_marginTop="144dp"
         android:layout_marginEnd="16dp"
         android:text="@string/nom_posteur"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -47,7 +47,7 @@
         android:layout_height="111dp"
         android:layout_marginTop="8dp"
         android:text="@string/description_post"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPager2" />
@@ -57,7 +57,7 @@
         android:layout_width="357dp"
         android:layout_height="77dp"
         android:text="@string/commentaires_post"
-        android:textSize="16dp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
