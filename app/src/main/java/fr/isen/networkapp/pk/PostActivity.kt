@@ -7,18 +7,34 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import fr.isen.networkapp.pk.databinding.ActivityPostBinding
+import android.view.View
+import android.widget.ImageView
+
 
 
 class PostActivity : AppCompatActivity() {
     lateinit var binding: ActivityPostBinding
+    val REQUEST_IMAGE_CAPTURE = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
-    }
-        val REQUEST_IMAGE_CAPTURE = 1
 
-    fun dispatchTakePictureIntent() {
+        binding.newPictureButton.setOnClickListener {
+            dispatchTakePictureIntent()
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            val imageBitmap = data?.extras?.get("data") as Bitmap
+            binding.pictureSelected.setImageBitmap(imageBitmap)
+        }
+    }
+
+    private fun dispatchTakePictureIntent() {
         val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         try {
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
@@ -27,11 +43,6 @@ class PostActivity : AppCompatActivity() {
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            val imageBitmap = data?.extras?.get("data") as Bitmap
-            R.pictureSelected.setImageBitmap(imageBitmap)
-        }
-    }
+
+
 }
