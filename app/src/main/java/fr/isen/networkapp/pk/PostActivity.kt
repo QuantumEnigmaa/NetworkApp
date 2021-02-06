@@ -29,8 +29,11 @@ class PostActivity : AppCompatActivity() {
         }
 
         binding.postButton.setOnClickListener {
-            val testMessage: Post = Post("postTest", "blablabla", "jean-didier")
+            /*val testMessage: Post = Post("postTest", "blablabla", "jean-didier")
+            dbRef.child("testpost").setValue(testMessage)*/
+            val testMessage: Post = Post(binding.postTitleInput.text.toString(),binding.postDescription.text.toString(),"Robert")
             dbRef.child("testpost").setValue(testMessage)
+            startActivity(Intent(this, HomeActivity::class.java))
         }
     }
 
