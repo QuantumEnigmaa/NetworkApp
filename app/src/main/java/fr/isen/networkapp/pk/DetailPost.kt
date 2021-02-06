@@ -9,4 +9,5 @@ class detailPost : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_post)
     }
+
 }
