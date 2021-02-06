@@ -7,7 +7,7 @@ import fr.isen.networkapp.pk.R
 class detailPost : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_post)
+        //setContentView(R.layout.activity_detail_post)
     }
 
 }
