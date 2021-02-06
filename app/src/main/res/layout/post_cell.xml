@@ -4,14 +4,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
 
     <ImageView
         android:id="@+id/cellphoto"
         android:layout_width="89dp"
         android:layout_height="87dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="140dp"
+        app:layout_constraintEnd_toStartOf="@+id/celldescription"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -20,18 +24,18 @@
         android:id="@+id/celltitre"
         android:layout_width="123dp"
         android:layout_height="41dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="68dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/celldescription"
-        android:layout_width="107dp"
-        android:layout_height="35dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginTop="128dp"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="160dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,8 +44,8 @@
         android:id="@+id/celluser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="308dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,8 +54,8 @@
         android:id="@+id/celllike"
         android:layout_width="69dp"
         android:layout_height="91dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="500dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="92dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/poucebleu" />
@@ -60,9 +64,11 @@
         android:id="@+id/celldetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="204dp"
-        android:layout_marginBottom="484dp"
-        android:text="TextView"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="176dp"
+        android:text="@string/cell_detail"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/celldescription"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

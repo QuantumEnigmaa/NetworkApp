@@ -18,4 +18,5 @@
     <string name="nom_posteur">Nom du Posteur</string>
     <string name="description_post">Description du Post</string>
     <string name="commentaires_post">Commentaire du Post</string>
+    <string name="cell_detail">Voir plus</string>
 </resources>
