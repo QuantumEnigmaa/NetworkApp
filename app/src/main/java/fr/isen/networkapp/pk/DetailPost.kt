@@ -22,13 +22,13 @@ class DetailPost : AppCompatActivity() {
 
         post = intent.getSerializableExtra(POST_INFO) as Post
 
-        binding.activityDetailPostNomPosteur.text = post.posterName
-        binding.activityDetailPostDescriptionPost.text = post.content
-        binding.activityDetailPostTitle.text = post.postTitle
-        binding.activityDetailPostLikeCount.text = "${post.likeBy!!.size-1}"
+        binding.activityPostDetailPosterName.text = post.posterName
+        binding.activityPostDetailDescription.text = post.content
+        binding.activityPostDetailTitle.text = post.postTitle
+        binding.activityPostDetailLikeCount.text = "${post.likeBy!!.size-1}"
 
         //TODO better user
-        binding.activityDetailPostLike.setOnClickListener {
+        binding.activityPostDetailLike.setOnClickListener {
             like("Jean-Test")
         }
     }
@@ -40,7 +40,7 @@ class DetailPost : AppCompatActivity() {
         else {
             post.likeBy!!.add(user)
         }
-        binding.activityDetailPostLikeCount.text = "${post.likeBy!!.size-1}"
+        binding.activityPostDetailLikeCount.text = "${post.likeBy!!.size-1}"
         return
     }
     override fun onDestroy() {

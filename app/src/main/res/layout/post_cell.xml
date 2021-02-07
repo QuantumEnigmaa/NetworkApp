@@ -14,8 +14,11 @@
         android:id="@+id/cellphoto"
         android:layout_width="89dp"
         android:layout_height="87dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/celldescription"
+        app:layout_constraintHorizontal_bias="0.408"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
@@ -24,30 +27,33 @@
         android:id="@+id/celltitre"
         android:layout_width="123dp"
         android:layout_height="41dp"
-        android:layout_marginStart="144dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="68dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/celllike"
+        app:layout_constraintStart_toEndOf="@+id/cellphoto"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/celldescription"
         android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="152dp"
+        android:layout_marginEnd="64dp"
         android:text="TextView"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/celluser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="68dp"
-        android:layout_marginEnd="308dp"
+        android:layout_marginEnd="10dp"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/celltitre"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -66,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="176dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/cell_detail"
         android:textColor="@color/dark_golden_rod"
         app:layout_constraintBottom_toBottomOf="parent"
