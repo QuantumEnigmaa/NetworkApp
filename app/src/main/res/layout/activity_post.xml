@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:background="#F4F4F4"
             android:inputType="textShortMessage|textEmailAddress"
-            android:text="@string/post_title" />
+            android:hint="@string/post_title" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,7 +60,7 @@
             android:layout_height="150dp"
             android:background="#F4F4F4"
             android:inputType="textLongMessage|textPassword"
-            android:text="@string/description" />
+            android:hint="@string/description" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

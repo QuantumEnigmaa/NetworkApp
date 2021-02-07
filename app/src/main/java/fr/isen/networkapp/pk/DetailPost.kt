@@ -46,6 +46,7 @@ class DetailPost : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         FirebaseUtils.dbRef.child(post.postId!!).setValue(post)
+        finish()
     }
 
 }

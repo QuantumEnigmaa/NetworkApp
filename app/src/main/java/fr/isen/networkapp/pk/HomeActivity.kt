@@ -33,32 +33,42 @@ class HomeActivity : AppCompatActivity() {
             startActivity(Intent(this, PostActivity::class.java))
         }
 
+        loadData()
+
+        binding.activityHomeSwipe.setOnRefreshListener {
+            binding.activityHomeRecycler.Recycler()
+            loadData()
+            binding.activityHomeSwipe.isRefreshing = false
+        }
+    }
+
+    private fun loadData() {
         postLst = mutableListOf()
         FirebaseUtils.dbRef.addListenerForSingleValueEvent(
-                 object : ValueEventListener{
-                     override fun onCancelled(error: DatabaseError) {
-                         TODO("Not yet implemented")
-                     }
+                object : ValueEventListener{
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
 
-                     override fun onDataChange(snapshot: DataSnapshot) {
-                         if(snapshot!!.exists()){
-                             for(h in snapshot.children){
-                                 //TODO reecrire en plus opti
-                                 // +moyen d'eviter "E/RecyclerView: No adapter attached; skipping layout"?
-                                 // + virer log
-                                 Log.wtf("dataFlag", h.toString())
-                                 val post = h.getValue(Post::class.java)
-                                 post!!.postId = h.key
-                                 postLst.add(post!!)
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        if(snapshot!!.exists()){
+                            for(h in snapshot.children){
+                                //TODO reecrire en plus opti
+                                // +moyen d'eviter "E/RecyclerView: No adapter attached; skipping layout"?
+                                // + virer log
+                                Log.wtf("dataFlag", h.toString())
+                                val post = h.getValue(Post::class.java)
+                                post!!.postId = h.key
+                                postLst.add(post!!)
 
-                             }
-                             //TODO de tout rentrer en une ligne?
-                             postLst.reverse()
-                             val adapter = FeedAdapter(postLst)
-                             binding.activityHomeRecycler.layoutManager = LinearLayoutManager(applicationContext)
-                             binding.activityHomeRecycler.adapter = adapter
-                         }
-                     }
-                 })
+                            }
+                            //TODO de tout rentrer en une ligne?
+                            postLst.reverse()
+                            val adapter = FeedAdapter(postLst)
+                            binding.activityHomeRecycler.layoutManager = LinearLayoutManager(applicationContext)
+                            binding.activityHomeRecycler.adapter = adapter
+                        }
+                    }
+                })
     }
 }

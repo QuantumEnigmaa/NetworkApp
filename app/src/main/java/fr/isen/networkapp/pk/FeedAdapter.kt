@@ -22,9 +22,9 @@ class FeedAdapter(private val entries: MutableList<Post>): RecyclerView.Adapter<
         // + implementer like sur cette page
         holder.titleCell.text = entries[position].postTitle
 
-        holder.descriptionCell.text = "testing my best hard coded description"
+        holder.descriptionCell.text = entries[position].content
         holder.photoCell.setImageResource(R.drawable.logoheart)
-        holder.userCell.text = "some hard coded user"
+        holder.userCell.text = entries[position].posterName
 
 
         val context = holder.itemView.context
