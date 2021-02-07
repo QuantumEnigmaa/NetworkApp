@@ -45,8 +45,10 @@ class HomeActivity : AppCompatActivity() {
                              for(h in snapshot.children){
                                  //TODO reecrire en plus opti
                                  // +moyen d'eviter "E/RecyclerView: No adapter attached; skipping layout"?
+                                 // + virer log
                                  Log.wtf("dataFlag", h.toString())
                                  val post = h.getValue(Post::class.java)
+                                 post!!.postId = h.key
                                  postLst.add(post!!)
 
                              }

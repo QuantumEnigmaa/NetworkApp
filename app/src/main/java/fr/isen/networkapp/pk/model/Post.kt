@@ -1,11 +1,14 @@
 package fr.isen.networkapp.pk.model
+import android.util.Log
 import java.io.Serializable
 
 class Post : Serializable {
     var postTitle: String? = null
     var content: String? = null
     var posterName: String? = null
-    var likeNumber: Int = 0
+    var likeBy: MutableList<String>? = null
+
+    var postId: String? = null
 
     constructor() {
 
@@ -15,6 +18,9 @@ class Post : Serializable {
         this.postTitle = title
         this.content = description
         this.posterName = name
-        this.likeNumber = 0
+        this.likeBy = mutableListOf<String>()
+        Log.wtf("dataFlag", likeBy.toString())
+        this.likeBy!!.add("Jean-Test")
+        Log.wtf("dataFlag", likeBy.toString())
     }
 }
