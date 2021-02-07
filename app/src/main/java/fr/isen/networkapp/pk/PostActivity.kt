@@ -1,32 +1,28 @@
 package fr.isen.networkapp.pk
 
-import android.annotation.TargetApi
-import android.app.Activity
-import android.app.ProgressDialog.show
 import android.content.ActivityNotFoundException
-import android.content.ContentUris
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.net.Uri
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.DocumentsContract
 import android.provider.MediaStore
-import android.util.Log
 import fr.isen.networkapp.pk.databinding.ActivityPostBinding
-import android.view.View
-import android.widget.ImageView
+import android.widget.ProgressBar
+import com.google.firebase.storage.StorageReference
 import com.squareup.picasso.Picasso
 import fr.isen.networkapp.pk.extensions.Extensions.toast
+import fr.isen.networkapp.pk.model.Image
 import fr.isen.networkapp.pk.model.Post
 import fr.isen.networkapp.pk.utils.FirebaseUtils.dbRef
 import fr.isen.networkapp.pk.utils.FirebaseUtils.firebaseUser
+import fr.isen.networkapp.pk.utils.FirebaseUtils.storageRef
+import java.util.*
 
 
 class PostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityPostBinding
+    private lateinit var filepath: Uri
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,10 +41,36 @@ class PostActivity : AppCompatActivity() {
 
         binding.postButton.setOnClickListener {
             //TODO: better username plz
-            val testMessage: Post = Post(binding.postTitleInput.text.toString(),binding.postDescription.text.toString(),"Robert")
-            dbRef.child(dbRef.push().key.toString()).setValue(testMessage)
-            startActivity(Intent(this, HomeActivity::class.java))
-            finish()
+            //val progress: ProgressBar = ProgressBar(this)
+            //progress.max = 100
+            //progress.scrollBarStyle = ProgressBar.SCROLL_AXIS_HORIZONTAL
+            uploadData()
+        }
+    }
+
+    private fun uploadData() {
+        if (filepath != null) {
+            val imgFile: StorageReference = storageRef.child(UUID.randomUUID().toString())
+            imgFile.putFile(filepath).addOnSuccessListener {
+                imgFile.downloadUrl.addOnSuccessListener {
+                    val image: Image = Image(it.toString())
+                    val url: String = image.getImageUrl().toString()
+                    val testMessage: Post = Post(binding.postTitleInput.text.toString(),binding.postDescription.text.toString(),
+                        firebaseUser.toString(), url)
+                    dbRef.child(dbRef.push().key.toString()).setValue(testMessage)
+                    toast("Post créé !")
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
+                }.addOnFailureListener {
+                    it.message?.let { it1 -> toast(it1) }
+                }
+            }.addOnFailureListener {
+                it.message?.let { it1 -> toast(it1) }
+            }.addOnProgressListener {
+                //TODO: handle progress bar
+            }
+        } else {
+            toast("Veuillez choisir une image")
         }
     }
 
@@ -68,7 +90,7 @@ class PostActivity : AppCompatActivity() {
                 }
             REQUEST_IMAGE_CHOOSE ->
                 if (resultCode == RESULT_OK) {
-                    val filepath = data?.data
+                    filepath = data?.data!!
                     Picasso.get().load(filepath).into(binding.imageView)
                 }
         }
