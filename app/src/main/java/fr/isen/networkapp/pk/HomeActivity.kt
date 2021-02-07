@@ -53,7 +53,7 @@ class HomeActivity : AppCompatActivity() {
 
                              }
                              //TODO de tout rentrer en une ligne?
-                             //TODO reverse lst pr avoir les post dans le bon ordre
+                             postLst.reverse()
                              val adapter = FeedAdapter(postLst)
                              binding.activityHomeRecycler.layoutManager = LinearLayoutManager(applicationContext)
                              binding.activityHomeRecycler.adapter = adapter

@@ -19,8 +19,6 @@ class Post : Serializable {
         this.content = description
         this.posterName = name
         this.likeBy = mutableListOf<String>()
-        Log.wtf("dataFlag", likeBy.toString())
-        this.likeBy!!.add("Jean-Test")
-        Log.wtf("dataFlag", likeBy.toString())
+        this.likeBy!!.add("initForDb")
     }
 }

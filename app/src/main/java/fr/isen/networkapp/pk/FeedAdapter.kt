@@ -19,7 +19,7 @@ class FeedAdapter(private val entries: MutableList<Post>): RecyclerView.Adapter<
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
         //TODO mega sale à refaire avec var temp et bind fonction (cf correction td categoryActivity)
         // + mise en page
-        // + finir de remplir les text/img
+        // + implementer like sur cette page
         holder.titleCell.text = entries[position].postTitle
 
         holder.descriptionCell.text = "testing my best hard coded description"

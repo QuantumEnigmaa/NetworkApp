@@ -22,42 +22,30 @@ class DetailPost : AppCompatActivity() {
 
         post = intent.getSerializableExtra(POST_INFO) as Post
 
-        val tempLike = 1
-        //val tempLike = if(post.likeBy!!.isNullOrEmpty()) 0 else post.likeBy!!.size
-
-        Log.wtf("dataFlag", post.likeBy.toString())
-        post.likeBy!!.add("Robert")
-
         binding.activityDetailPostNomPosteur.text = post.posterName
         binding.activityDetailPostDescriptionPost.text = post.content
         binding.activityDetailPostTitle.text = post.postTitle
+        binding.activityDetailPostLikeCount.text = "${post.likeBy!!.size-1}"
 
-        binding.activityDetailPostLikeCount.text = tempLike.toString()
-
-        //binding.activityDetailPostLikeCount.text = post.likeNumber().toString()
-        //binding.activityDetailPostLikeCount.text = post.likeBy!!.size.toString()
-        //Log.wtf("dataFlag", "flag")
-        //Log.wtf("dataFlag", post.likeBy?.size.toString())
-/*
+        //TODO better user
         binding.activityDetailPostLike.setOnClickListener {
-            post.like("Jean-Test")
-            FirebaseUtils.dbRef.child(post.postId!!).setValue(post)
-        }*/
+            like("Jean-Test")
+        }
     }
 
-    private fun likeNumber(): Int {
-        //return if(post.likeBy!!.isNullOrEmpty()) 0 else post.likeBy!!.size
-        return 0
-    }
-
-    private fun like(user: String): Boolean {
+    private fun like(user: String) {
         if(post.likeBy!!.contains(user)) {
             post.likeBy!!.remove(user)
         }
         else {
             post.likeBy!!.add(user)
         }
-        return true
+        binding.activityDetailPostLikeCount.text = "${post.likeBy!!.size-1}"
+        return
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        FirebaseUtils.dbRef.child(post.postId!!).setValue(post)
     }
 
 }
