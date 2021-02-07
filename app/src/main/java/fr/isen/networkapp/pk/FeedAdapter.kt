@@ -6,15 +6,18 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import fr.isen.networkapp.pk.databinding.PostCellBinding
+import fr.isen.networkapp.pk.model.Post
 
 
-class FeedAdapter(private val entries: List<String>): RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
+class FeedAdapter(private val entries: MutableList<Post>): RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FeedViewHolder {
         return FeedViewHolder(PostCellBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
-        holder.titleCell.text = entries[position]
+        //TODO mega sale à refaire avec var temp et bind fonction (cf correction td categoryActivity)
+        holder.titleCell.text = entries[position].postTitle
+
         holder.descriptionCell.text = "testing my best hard coded description"
         holder.photoCell.setImageResource(R.drawable.logoheart)
         holder.userCell.text = "some hard coded user"
