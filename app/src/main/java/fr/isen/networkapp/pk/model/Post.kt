@@ -1,6 +1,7 @@
 package fr.isen.networkapp.pk.model
+import java.io.Serializable
 
-class Post {
+class Post : Serializable {
     var postTitle: String? = null
     var content: String? = null
     var posterName: String? = null

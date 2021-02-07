@@ -1,6 +1,5 @@
 package fr.isen.networkapp.pk
 
-
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,14 +25,13 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         // Create post button handler
-        //TODO le button passe en dessous du recyclerview avec
-        // le parametre android:layout_height="match_parent"
-        // et devient useless
+        //TODO le button passe en dessous (j'imagine) du recyclerview avec
+        // + le truc du refresh a pas oublier
+        //le parametre android:layout_height="match_parent"
+        //et devient useless
         binding.activityHomeCreatePost.setOnClickListener {
             startActivity(Intent(this, PostActivity::class.java))
         }
-
-        //loadFeed()
 
         postLst = mutableListOf()
         FirebaseUtils.dbRef.addListenerForSingleValueEvent(
@@ -45,12 +43,15 @@ class HomeActivity : AppCompatActivity() {
                      override fun onDataChange(snapshot: DataSnapshot) {
                          if(snapshot!!.exists()){
                              for(h in snapshot.children){
-                                 //TODO cool print mais a virer
+                                 //TODO reecrire en plus opti
+                                 // +moyen d'eviter "E/RecyclerView: No adapter attached; skipping layout"?
                                  Log.wtf("dataFlag", h.toString())
                                  val post = h.getValue(Post::class.java)
                                  postLst.add(post!!)
 
                              }
+                             //TODO de tout rentrer en une ligne?
+                             //TODO reverse lst pr avoir les post dans le bon ordre
                              val adapter = FeedAdapter(postLst)
                              binding.activityHomeRecycler.layoutManager = LinearLayoutManager(applicationContext)
                              binding.activityHomeRecycler.adapter = adapter
@@ -58,11 +59,4 @@ class HomeActivity : AppCompatActivity() {
                      }
                  })
     }
-/*
-    private fun loadFeed() {
-        var entries = listOf<String>("salade", "boeuf", "glace")
-        val adapter = FeedAdapter(entries)
-        binding.activityHomeRecycler.layoutManager = LinearLayoutManager(this)
-        binding.activityHomeRecycler.adapter = adapter
-    }*/
 }
