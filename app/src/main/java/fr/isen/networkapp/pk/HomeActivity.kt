@@ -11,6 +11,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import fr.isen.networkapp.pk.adapters.FeedAdapter
 import fr.isen.networkapp.pk.model.Post
+import fr.isen.networkapp.pk.model.User
 import fr.isen.networkapp.pk.utils.FirebaseUtils
 
 class HomeActivity : AppCompatActivity() {

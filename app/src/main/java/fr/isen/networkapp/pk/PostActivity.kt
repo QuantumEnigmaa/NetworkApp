@@ -75,7 +75,7 @@ class PostActivity : AppCompatActivity() {
                 it.message?.let { it1 -> toast(it1) }
             }.addOnProgressListener {
                 var prog: Long = (100 * it.bytesTransferred/it.totalByteCount)
-                binding.progressCircular.progress=prog.toFloat()
+                binding.progressCircular.setProgressWithAnimation(prog.toFloat(), 1000)
             }
         } else {
             toast("Veuillez choisir une image")
