@@ -8,6 +8,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import fr.isen.networkapp.pk.databinding.ActivityPostBinding
 import android.widget.ProgressBar
 import com.google.firebase.storage.StorageReference
@@ -45,7 +46,6 @@ class PostActivity : AppCompatActivity() {
             //TODO: better username plz
             binding.progressCircular.apply {
                 progressMax = 100f
-                setProgressWithAnimation(50f, 1000)
                 progressBarWidth = 5f
                 backgroundProgressBarWidth = 2f
                 progressBarColor = Color.BLUE
@@ -55,6 +55,7 @@ class PostActivity : AppCompatActivity() {
     }
 
     private fun uploadData() {
+        binding.progressCircular.visibility= View.VISIBLE
         if (filepath != null) {
             val imgFile: StorageReference = storageRef.child(UUID.randomUUID().toString())
             imgFile.putFile(filepath).addOnSuccessListener {
@@ -73,7 +74,8 @@ class PostActivity : AppCompatActivity() {
             }.addOnFailureListener {
                 it.message?.let { it1 -> toast(it1) }
             }.addOnProgressListener {
-                //TODO: handle progress bar
+                var prog: Long = (100 * it.bytesTransferred/it.totalByteCount)
+                binding.progressCircular.progress=prog.toFloat()
             }
         } else {
             toast("Veuillez choisir une image")
