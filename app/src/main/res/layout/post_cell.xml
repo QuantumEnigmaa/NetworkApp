@@ -25,11 +25,13 @@
 
     <TextView
         android:id="@+id/celltitre"
-        android:layout_width="123dp"
-        android:layout_height="41dp"
+        android:layout_width="126dp"
+        android:layout_height="33dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="100dp"
         android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="22dp"
         app:layout_constraintEnd_toStartOf="@+id/celllike"
         app:layout_constraintStart_toEndOf="@+id/cellphoto"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,6 +43,7 @@
         android:layout_marginTop="152dp"
         android:layout_marginEnd="64dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -52,6 +55,7 @@
         android:layout_marginTop="68dp"
         android:layout_marginEnd="10dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/celltitre"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -71,12 +75,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="176dp"
         android:layout_marginBottom="10dp"
         android:text="@string/cell_detail"
         android:textColor="@color/dark_golden_rod"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/celldescription"
         app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

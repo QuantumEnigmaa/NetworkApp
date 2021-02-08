@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sea"
     tools:context=".DetailPost">
 
 
@@ -15,10 +15,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="15dp"
+        android:gravity="center"
         android:text="@string/post_detail_title"
+        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:gravity="center"
         app:layout_constraintEnd_toStartOf="@+id/activityPostDetailProfileImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -36,12 +37,15 @@
     <TextView
         android:id="@+id/activityPostDetailPosterName"
         android:layout_width="wrap_content"
-        android:maxWidth="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="76dp"
+        android:maxWidth="100dp"
         android:text="@string/post_detail_title"
+        android:textColor="@color/white"
+        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activityPostDetailProfileImage" />
 
     <ImageView
@@ -49,9 +53,10 @@
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/ic_launcher_background"
-        app:layout_constraintTop_toBottomOf="@+id/activityPostDetailPosterName"
-        tools:layout_editor_absoluteX="0dp" />
+        android:src="@drawable/craby"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activityPostDetailPosterName" />
 
     <TextView
         android:id="@+id/activityPostDetailDescription"
@@ -60,9 +65,11 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
+        android:background="@drawable/border_description"
         android:padding="8dp"
         android:text="@string/post_detail_title"
-        android:background="@drawable/border_description"
+        android:textColor="@color/white"
+        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activityPostDetailImage" />
@@ -71,8 +78,8 @@
         android:id="@+id/activityPostDetailComment"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginBottom="15dp"
         android:src="@drawable/commentaire"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -81,21 +88,34 @@
         android:id="@+id/activityPostDetailLike"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="35dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginBottom="15dp"
         android:src="@drawable/poucebleu"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/activityPostDetailComment"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/activityPostDetailLikeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="20dp"
         android:text="TextView"
-        app:layout_constraintEnd_toStartOf="@+id/activityPostDetailProfileImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityPostDetailTitle" />
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/activityPostDetailLike"
+        app:layout_constraintStart_toEndOf="@+id/textNbLikes" />
+
+    <TextView
+        android:id="@+id/textNbLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginBottom="20dp"
+        android:autoText="false"
+        android:text="Nombres Likes :"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/activityPostDetailLike"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
