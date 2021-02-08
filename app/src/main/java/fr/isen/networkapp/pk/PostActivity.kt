@@ -8,6 +8,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import fr.isen.networkapp.pk.databinding.ActivityPostBinding
 import android.widget.ProgressBar
 import com.google.firebase.storage.StorageReference
@@ -41,6 +42,7 @@ class PostActivity : AppCompatActivity() {
             loadChosenPicture()
         }
 
+        binding.progressCircular.visibility = View.INVISIBLE
         binding.postButton.setOnClickListener {
             //TODO: better username plz
             binding.progressCircular.apply {
@@ -55,6 +57,7 @@ class PostActivity : AppCompatActivity() {
     }
 
     private fun uploadData() {
+        binding.progressCircular.visibility = View.VISIBLE
         if (filepath != null) {
             val imgFile: StorageReference = storageRef.child(UUID.randomUUID().toString())
             imgFile.putFile(filepath).addOnSuccessListener {

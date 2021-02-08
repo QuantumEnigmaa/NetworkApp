@@ -29,6 +29,12 @@ class DetailPost : AppCompatActivity() {
         binding.activityPostDetailTitle.text = post.postTitle
         binding.activityPostDetailLikeCount.text = "${post.likeBy!!.size-1}"
 
+        val listComments: ArrayList<String> = ArrayList()
+        val adapter = CommentAdapter(listComments)
+        Log.i("comment", "is comment working ?")
+        binding.activityPostDetailRecycler.layoutManager = LinearLayoutManager(applicationContext)
+        binding.activityPostDetailRecycler.adapter = adapter
+
         Picasso.get().load(post.url).into(binding.activityPostDetailImage)
 
         //TODO better user
@@ -37,16 +43,14 @@ class DetailPost : AppCompatActivity() {
         }
 
         binding.activityPostDetailComment.setOnClickListener {
-            writeComment()
+            writeComment(listComments, adapter)
         }
     }
 
-    private fun writeComment() {
-        post.comments?.add(binding.activityPostDetailWriteComment.text.toString())
-        val adapter = post.comments?.let { CommentAdapter(it) }
-        Log.i("comment", "is comment working ?")
-        binding.activityPostDetailRecycler.layoutManager = LinearLayoutManager(applicationContext)
-        binding.activityPostDetailRecycler.adapter = adapter
+    private fun writeComment(Comments: ArrayList<String>, adapt: CommentAdapter) {
+        Comments.add(binding.activityPostDetailWriteComment.text.toString())
+        adapt.notifyDataSetChanged()
+        //val adapter = post.comments?.let { CommentAdapter(it) }
     }
 
     private fun like(user: String) {
