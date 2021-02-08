@@ -3,6 +3,7 @@ package fr.isen.networkapp.pk
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -42,9 +43,13 @@ class PostActivity : AppCompatActivity() {
 
         binding.postButton.setOnClickListener {
             //TODO: better username plz
-            //val progress: ProgressBar = ProgressBar(this)
-            //progress.max = 100
-            //progress.scrollBarStyle = ProgressBar.SCROLL_AXIS_HORIZONTAL
+            binding.progressCircular.apply {
+                progressMax = 100f
+                setProgressWithAnimation(50f, 1000)
+                progressBarWidth = 5f
+                backgroundProgressBarWidth = 2f
+                progressBarColor = Color.BLUE
+            }
             uploadData()
         }
     }
