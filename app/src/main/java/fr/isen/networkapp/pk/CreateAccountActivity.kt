@@ -4,11 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
-import com.google.firebase.auth.FirebaseUser
 import fr.isen.networkapp.pk.databinding.ActivityCreateAccountBinding
 import fr.isen.networkapp.pk.extensions.Extensions.toast
+import fr.isen.networkapp.pk.model.User
+import fr.isen.networkapp.pk.utils.FirebaseUtils
 import fr.isen.networkapp.pk.utils.FirebaseUtils.firebaseAuth
-import fr.isen.networkapp.pk.utils.FirebaseUtils.firebaseUser
+import fr.isen.networkapp.pk.utils.FirebaseUtils.userRef
 
 class CreateAccountActivity : AppCompatActivity() {
 
@@ -65,6 +66,7 @@ class CreateAccountActivity : AppCompatActivity() {
                         // sendEmailVerification()
                         startActivity(Intent(this, HomeActivity::class.java))
                         finish()
+                        addUser()
                     } else {
                         toast("Erreur lors de la création")
                     }
@@ -72,6 +74,11 @@ class CreateAccountActivity : AppCompatActivity() {
         }
     }
 
+    private fun addUser(){
+        var user = firebaseAuth.currentUser
+        var usertest = User(binding.userName.text, user!!.uid)
+        userRef.child(FirebaseUtils.userRef.push().key.toString()).setValue(usertest)
+    }
     /*private fun sendEmailVerification() {
         firebaseUser?.let {
             it.sendEmailVerification().addOnCompleteListener { task ->
