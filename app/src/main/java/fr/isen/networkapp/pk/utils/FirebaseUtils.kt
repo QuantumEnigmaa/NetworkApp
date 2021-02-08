@@ -14,4 +14,5 @@ object FirebaseUtils {
     val dbRef: DatabaseReference = firebaseDB.getReference("postData")
     private val firebaseStorage: FirebaseStorage = FirebaseStorage.getInstance()
     val storageRef: StorageReference = firebaseStorage.getReference("images")
+    val userRef: DatabaseReference = firebaseDB.getReference("user")
 }
