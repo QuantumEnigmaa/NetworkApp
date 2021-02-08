@@ -18,6 +18,7 @@ import fr.isen.networkapp.pk.utils.FirebaseUtils.dbRef
 import fr.isen.networkapp.pk.utils.FirebaseUtils.firebaseUser
 import fr.isen.networkapp.pk.utils.FirebaseUtils.storageRef
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class PostActivity : AppCompatActivity() {
@@ -56,7 +57,7 @@ class PostActivity : AppCompatActivity() {
                     val image: Image = Image(it.toString())
                     val url: String = image.getImageUrl().toString()
                     val testMessage: Post = Post(binding.postTitleInput.text.toString(),binding.postDescription.text.toString(),
-                        firebaseUser.toString(), url)
+                        firebaseUser.toString(), url, ArrayList())
                     dbRef.child(dbRef.push().key.toString()).setValue(testMessage)
                     toast("Post créé !")
                     startActivity(Intent(this, HomeActivity::class.java))

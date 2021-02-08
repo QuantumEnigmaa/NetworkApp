@@ -2,7 +2,10 @@ package fr.isen.networkapp.pk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
+import fr.isen.networkapp.pk.adapters.CommentAdapter
 import fr.isen.networkapp.pk.adapters.FeedAdapter.Companion.POST_INFO
 import fr.isen.networkapp.pk.databinding.ActivityDetailPostBinding
 import fr.isen.networkapp.pk.model.Post
@@ -32,6 +35,18 @@ class DetailPost : AppCompatActivity() {
         binding.activityPostDetailLike.setOnClickListener {
             like("Jean-Test")
         }
+
+        binding.activityPostDetailComment.setOnClickListener {
+            writeComment()
+        }
+    }
+
+    private fun writeComment() {
+        post.comments?.add(binding.activityPostDetailWriteComment.text.toString())
+        val adapter = post.comments?.let { CommentAdapter(it) }
+        Log.i("comment", "is comment working ?")
+        binding.activityPostDetailRecycler.layoutManager = LinearLayoutManager(applicationContext)
+        binding.activityPostDetailRecycler.adapter = adapter
     }
 
     private fun like(user: String) {

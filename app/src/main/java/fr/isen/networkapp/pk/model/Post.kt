@@ -1,4 +1,5 @@
 package fr.isen.networkapp.pk.model
+
 import android.util.Log
 import java.io.Serializable
 
