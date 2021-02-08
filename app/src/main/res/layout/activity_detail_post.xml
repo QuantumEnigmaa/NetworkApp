@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/sea"
     tools:context=".DetailPost">
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/activityPostDetailLike"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/activityPostDetailWriteComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/post_detail_comment" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/activityPostDetailTitle"
@@ -15,11 +33,10 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="15dp"
-        android:gravity="center"
         android:text="@string/post_detail_title"
-        android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold"
+        android:gravity="center"
         app:layout_constraintEnd_toStartOf="@+id/activityPostDetailProfileImage"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,26 +54,22 @@
     <TextView
         android:id="@+id/activityPostDetailPosterName"
         android:layout_width="wrap_content"
+        android:maxWidth="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:maxWidth="100dp"
+        android:layout_marginEnd="76dp"
         android:text="@string/post_detail_title"
-        android:textColor="@color/white"
-        android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.85"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activityPostDetailProfileImage" />
 
     <ImageView
         android:id="@+id/activityPostDetailImage"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/craby"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/activityPostDetailPosterName" />
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintTop_toBottomOf="@+id/activityPostDetailPosterName"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/activityPostDetailDescription"
@@ -68,8 +81,6 @@
         android:background="@drawable/border_description"
         android:padding="8dp"
         android:text="@string/post_detail_title"
-        android:textColor="@color/white"
-        android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activityPostDetailImage" />
@@ -78,8 +89,8 @@
         android:id="@+id/activityPostDetailComment"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="35dp"
         android:src="@drawable/commentaire"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -88,34 +99,38 @@
         android:id="@+id/activityPostDetailLike"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="35dp"
         android:src="@drawable/poucebleu"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/activityPostDetailComment"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/activityPostDetailLikeCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
         android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/activityPostDetailLike"
-        app:layout_constraintStart_toEndOf="@+id/textNbLikes" />
+        app:layout_constraintEnd_toStartOf="@+id/activityPostDetailProfileImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activityPostDetailTitle" />
 
-    <TextView
-        android:id="@+id/textNbLikes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginBottom="20dp"
-        android:autoText="false"
-        android:text="Nombres Likes :"
-        android:textColor="@color/white"
-        android:textSize="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/activityPostDetailLike"
-        app:layout_constraintStart_toStartOf="parent" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/activityPostDetailRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/border_description"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activityPostDetailDescription">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

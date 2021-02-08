@@ -2,7 +2,10 @@ package fr.isen.networkapp.pk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
+import fr.isen.networkapp.pk.adapters.CommentAdapter
 import fr.isen.networkapp.pk.adapters.FeedAdapter.Companion.POST_INFO
 import fr.isen.networkapp.pk.databinding.ActivityDetailPostBinding
 import fr.isen.networkapp.pk.model.Post
@@ -26,12 +29,28 @@ class DetailPost : AppCompatActivity() {
         binding.activityPostDetailTitle.text = post.postTitle
         binding.activityPostDetailLikeCount.text = "${post.likeBy!!.size-1}"
 
+        val listComments: ArrayList<String> = ArrayList()
+        val adapter = CommentAdapter(listComments)
+        Log.i("comment", "is comment working ?")
+        binding.activityPostDetailRecycler.layoutManager = LinearLayoutManager(applicationContext)
+        binding.activityPostDetailRecycler.adapter = adapter
+
         Picasso.get().load(post.url).into(binding.activityPostDetailImage)
 
         //TODO better user
         binding.activityPostDetailLike.setOnClickListener {
             like("Jean-Test")
         }
+
+        binding.activityPostDetailComment.setOnClickListener {
+            writeComment(listComments, adapter)
+        }
+    }
+
+    private fun writeComment(Comments: ArrayList<String>, adapt: CommentAdapter) {
+        Comments.add(binding.activityPostDetailWriteComment.text.toString())
+        adapt.notifyDataSetChanged()
+        //val adapter = post.comments?.let { CommentAdapter(it) }
     }
 
     private fun like(user: String) {
