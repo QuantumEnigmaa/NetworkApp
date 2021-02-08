@@ -71,8 +71,8 @@
         android:id="@+id/activityPostDetailComment"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="35dp"
         android:src="@drawable/commentaire"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -81,10 +81,12 @@
         android:id="@+id/activityPostDetailLike"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="35dp"
         android:src="@drawable/poucebleu"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/activityPostDetailComment"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView

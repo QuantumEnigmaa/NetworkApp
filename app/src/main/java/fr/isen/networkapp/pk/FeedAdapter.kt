@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import fr.isen.networkapp.pk.databinding.PostCellBinding
 import fr.isen.networkapp.pk.model.Post
 
@@ -26,6 +27,7 @@ class FeedAdapter(private val entries: MutableList<Post>): RecyclerView.Adapter<
         holder.photoCell.setImageResource(R.drawable.logoheart)
         holder.userCell.text = entries[position].posterName
 
+        Picasso.get().load(entries[position].url).into(holder.photoCell)
 
         val context = holder.itemView.context
         holder.detailCell.setOnClickListener {

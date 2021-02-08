@@ -3,6 +3,7 @@ package fr.isen.networkapp.pk
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.squareup.picasso.Picasso
 import fr.isen.networkapp.pk.FeedAdapter.Companion.POST_INFO
 import fr.isen.networkapp.pk.R
 import fr.isen.networkapp.pk.databinding.ActivityDetailPostBinding
@@ -26,6 +27,8 @@ class DetailPost : AppCompatActivity() {
         binding.activityPostDetailDescription.text = post.content
         binding.activityPostDetailTitle.text = post.postTitle
         binding.activityPostDetailLikeCount.text = "${post.likeBy!!.size-1}"
+
+        Picasso.get().load(post.url).into(binding.activityPostDetailImage)
 
         //TODO better user
         binding.activityPostDetailLike.setOnClickListener {
