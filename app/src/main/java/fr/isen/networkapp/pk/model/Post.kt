@@ -7,6 +7,7 @@ class Post : Serializable {
     var content: String? = null
     var posterName: String? = null
     var url: String? = null
+    var comments: ArrayList<String>? = null
     var likeBy: MutableList<String>? = null
 
     var postId: String? = null
@@ -15,11 +16,12 @@ class Post : Serializable {
 
     }
 
-    constructor(title: String, description: String, name: String, imageUrl: String) {
+    constructor(title: String, description: String, name: String, imageUrl: String, listComment: ArrayList<String>) {
         this.postTitle = title
         this.content = description
         this.posterName = name
         this.url = imageUrl
+        this.comments = listComment
         this.likeBy = mutableListOf<String>()
         this.likeBy!!.add("initForDb")
     }

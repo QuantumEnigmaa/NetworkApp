@@ -1,13 +1,14 @@
-package fr.isen.networkapp.pk
+package fr.isen.networkapp.pk.adapters
 
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import fr.isen.networkapp.pk.DetailPost
+import fr.isen.networkapp.pk.R
 import fr.isen.networkapp.pk.databinding.PostCellBinding
 import fr.isen.networkapp.pk.model.Post
 

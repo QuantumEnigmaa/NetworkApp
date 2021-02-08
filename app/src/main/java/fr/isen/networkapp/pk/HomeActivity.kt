@@ -5,12 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import fr.isen.networkapp.pk.databinding.ActivityHomeBinding
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
-import fr.isen.networkapp.pk.FeedAdapter
+import fr.isen.networkapp.pk.adapters.FeedAdapter
 import fr.isen.networkapp.pk.model.Post
 import fr.isen.networkapp.pk.utils.FirebaseUtils
 

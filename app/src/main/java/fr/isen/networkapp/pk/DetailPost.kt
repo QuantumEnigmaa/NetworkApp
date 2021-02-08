@@ -2,10 +2,8 @@ package fr.isen.networkapp.pk
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import com.squareup.picasso.Picasso
-import fr.isen.networkapp.pk.FeedAdapter.Companion.POST_INFO
-import fr.isen.networkapp.pk.R
+import fr.isen.networkapp.pk.adapters.FeedAdapter.Companion.POST_INFO
 import fr.isen.networkapp.pk.databinding.ActivityDetailPostBinding
 import fr.isen.networkapp.pk.model.Post
 import fr.isen.networkapp.pk.utils.FirebaseUtils
