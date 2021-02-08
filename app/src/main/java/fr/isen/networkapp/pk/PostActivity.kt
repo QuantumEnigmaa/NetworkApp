@@ -63,7 +63,7 @@ class PostActivity : AppCompatActivity() {
                     val image: Image = Image(it.toString())
                     val url: String = image.getImageUrl().toString()
                     val testMessage: Post = Post(binding.postTitleInput.text.toString(),binding.postDescription.text.toString(),
-                        firebaseUser.toString(), url, ArrayList())
+                        "Zirkonyx", url, ArrayList())
                     dbRef.child(dbRef.push().key.toString()).setValue(testMessage)
                     toast("Post créé !")
                     startActivity(Intent(this, HomeActivity::class.java))
